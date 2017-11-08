@@ -1,0 +1,344 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+    <Script File="Inspector.lua"/>
+    <Script File="Miniature.lua"/>
+
+    <Frame name="Inspector" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+        <Size x="120" y="120"/>
+        <Anchors><Anchor point="CENTER" relativeTo="UIParent"/></Anchors>
+
+        <Frames>
+            <Frame name="$parent_MainFrame" hidden="false" frameStrata="DIALOG">
+                <Size x="120" y="120"/>
+                <Anchors>
+                        <Anchor point="CENTER" relativePoint="CENTER" relativeTo="$parent"/>
+                </Anchors>
+
+                <Layers>
+                    <!-- 프레임 제목 -->
+                    <Layer level="ARTWORK">
+                        <Texture name="$parent_HeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
+                            <Size><AbsDimension x="256" y="64"/></Size>
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="TOP">
+                                    <Offset><AbsDimension x="0" y="28"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                        <FontString name="$parent_HeaderString" inherits="GameFontNormal" text="Inspector">
+                            <Anchors>
+                                <Anchor point="TOP" relativeTo="$parent_HeaderTexture">
+                                    <Offset><AbsDimension x="0" y="-13"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+
+                    <Layer level="ARTWORK">
+                        <!-- FACTION -->
+                        <Texture name="$parent_FactionTexture">
+                            <Size><AbsDimension x="104" y="104"/></Size>
+                            <Anchors>
+                                <Anchor point="LEFTTOP" relativePoint="TOPLEFT">
+                                    <Offset><AbsDimension x="70" y="-55"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+
+                        <!-- INFO TEXT BACKGROUND -->
+                        <Texture name="$parent_InfoBackTexture" file="Interface\FriendsFrame\PlusManz-CharacterBG">
+                            <Size><AbsDimension x="230" y="105"/></Size>
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_FactionTexture">
+                                    <Offset><AbsDimension x="0" y="12"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="0" g="0" b="0" a="0.5"/>
+                        </Texture>
+
+                        <!-- NAME -->
+                        <FontString name="$parent_NameString" font="GameFontNormalLarge" justifyH="CENTER" justifyV="MIDDLE">
+                            <Size><AbsDimension x="160" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_FactionTexture">
+                                    <Offset><AbsDimension x="0" y="-10"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="1" g="1" b="1"/>
+                        </FontString>
+
+                        <!-- LEVEL -->
+                        <FontString name="$parent_LevelString" font="GameFontNormal" justifyH="CENTER" justifyV="MIDDLE">
+                            <Size><AbsDimension x="160" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_FactionTexture">
+                                    <Offset><AbsDimension x="0" y="-30"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+
+                        <!-- GUILD -->
+                        <FontString name="$parent_GuildString" font="GameFontNormal" justifyH="CENTER" justifyV="MIDDLE">
+                            <Size><AbsDimension x="160" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_FactionTexture">
+                                    <Offset><AbsDimension x="0" y="-50"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="0.4" g="0.6" b="1"/>
+                        </FontString>
+
+                        <!-- AVERAGE LEVEL -->
+                        <Texture name="$parent_AverageBack" file="Interface\MINIMAP\UI-Minimap-Background">
+                            <Size><AbsDimension x="75" y="75"/></Size>
+                            <Anchors>
+                                <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                                    <Offset><AbsDimension x="-74" y="-74"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                            <color r="0" g="0" b="0" a="0.6"/>
+                        </Texture>
+                        <Texture name="$parent_AverageBorder" file="Interface\UNITPOWERBARALT\Mechanical_Circular_Frame">
+                            <Size><AbsDimension x="128" y="128"/></Size>
+                            <Anchors>
+                                <Anchor point="CENTER" relativePoint="CENTER" relativeTo="$parent_AverageBack">
+                                    <Offset><AbsDimension x="0" y="0"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                        <FontString name="$parent_AverageString" font="GameFontNormalLarge" justifyH="CENTER" justifyV="MIDDLE">
+                            <Size><AbsDimension x="60" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="CENTER" relativePoint="CENTER" relativeTo="$parent_AverageBack">
+                                    <Offset><AbsDimension x="0" y="-10"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                            <color r="1" g="1" b="1" a="1"/>
+                        </FontString>
+
+                        <!-- CLASS -->
+                        <Texture name="$parent_ClassBack" file="Interface\DialogFrame\UI-DialogBox-Header">
+                            <Size><AbsDimension x="240" y="64"/></Size>
+                            <Anchors>
+                                <Anchor point="BOTTOM" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+                                    <Offset><AbsDimension x="120" y="0"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                        <FontString name="$parent_ClassString" font="GameFontNormal" justifyH="CENTER" justifyV="MIDDLE">
+                            <Size><AbsDimension x="220" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="TOP" relativeTo="$parent_ClassBack">
+                                    <Offset><AbsDimension x="0" y="-10"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                        <Texture name="$parent_ClassTexture">
+                            <Size><AbsDimension x="150" y="150"/></Size>
+                            <Anchors>
+                                <Anchor point="BOTTOM" relativePoint="TOP" relativeTo="$parent_ClassBack">
+                                    <Offset><AbsDimension x="0" y="-20"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+
+                        <!-- RACE -->
+                        <Texture name="$parent_RaceBack" file="Interface\DialogFrame\UI-DialogBox-Header">
+                            <Size><AbsDimension x="240" y="64"/></Size>
+                            <Anchors>
+                                <Anchor point="BOTTOM" relativePoint="BOTTOMRIGHT" relativeTo="$parent">
+                                    <Offset><AbsDimension x="-120" y="0"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                        <FontString name="$parent_RaceString" font="GameFontNormal" justifyH="CENTER" justifyV="MIDDLE">
+                            <Size><AbsDimension x="220" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="TOP" relativeTo="$parent_RaceBack">
+                                    <Offset><AbsDimension x="0" y="-10"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                        <Texture name="$parent_RaceTexture">
+                            <Size><AbsDimension x="150" y="150"/></Size>
+                            <Anchors>
+                                <Anchor point="BOTTOM" relativePoint="TOP" relativeTo="$parent_RaceBack">
+                                    <Offset><AbsDimension x="0" y="-15"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+
+                        <!-- NPC INFO -->
+                        <Texture name="$parent_NpcBack" file="Interface\DialogFrame\UI-DialogBox-Header">
+                            <Size><AbsDimension x="320" y="64"/></Size>
+                            <Anchors>
+                                <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+                                    <Offset><AbsDimension x="-40" y="0"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                        <FontString name="$parent_NpcString" font="GameFontNormalLarge" justifyH="CENTER" justifyV="MIDDLE">
+                            <Size><AbsDimension x="320" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent">
+                                    <Offset><AbsDimension x="-40" y="34"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="1" g="1" b="1" a="1"/>
+                        </FontString>
+                    </Layer>
+
+                    <Layer level="OVERLAY">
+                        <!-- 평균 레벨 아이콘 -->
+                        <Texture name="$parent_AverageIcon" file="Interface\PvPRankBadges\PvPRank12">
+                            <Size><AbsDimension x="20" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="CENTER" relativePoint="CENTER" relativeTo="$parent_AverageBack">
+                                    <Offset><AbsDimension x="0" y="12"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                </Layers>
+            </Frame>
+
+            <!-- "모델" -->
+            <PlayerModel name="$parent_PlayerModel" hidden="false" frameStrata="FULLSCREEN">
+                <Size x="110" y="110"/>
+                <Anchors><Anchor point="CENTER" relativePoint="CENTER" relativeTo="$parent"/></Anchors>
+            </PlayerModel>
+
+            <!-- 아이템 목록 - 왼쪽 -->
+            <Frame name="$parent_InventoryFrameLeft" hidden="false" frameStrata="HIGH">
+                <Size><AbsDimension x="160" y="200"/></Size>
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativePoint="TOPLEFT">
+                        <Offset><AbsDimension x="10" y="-15"/></Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="false">
+                    <BackgroundInsets><AbsInset left="4" right="4" top="3" bottom="3"/></BackgroundInsets>
+                    <EdgeSize><AbsValue val="16"/></EdgeSize>
+                    <color r="0" g="0" b="0" a="0.8"/>
+                </Backdrop>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <!-- 로딩 표시 -->
+                        <FontString name="$parent_LoadingString" font="GameFontNormalLarge" justifyH="CENTER" justifyV="MIDDLE" text="Loading...">
+                            <Size><AbsDimension x="140" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="TOP">
+                                    <Offset><AbsDimension x="0" y="-50"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="1" g="1" b="1" a="1"/>
+                        </FontString>
+
+                        <!-- 살펴보기 - 아이콘 -->
+                        <Texture name="Inspector_BlizzardInspectTexture" file="Interface\GuildBankFrame\UI-GuildBankFrame-NewTab" hidden="false">
+                            <Size><AbsDimension x="24" y="24"/></Size>
+                            <Anchors>
+                                <Anchor point="BOTTOM" relativePoint="BOTTOM">
+                                    <Offset><AbsDimension x="0" y="65"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                </Layers>
+            </Frame>
+
+            <!-- 아이템 목록 - 오른쪽 -->
+            <Frame name="$parent_InventoryFrameRight" hidden="false" frameStrata="HIGH">
+                <Size><AbsDimension x="160" y="200"/></Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+                        <Offset><AbsDimension x="-10" y="-15"/></Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="false">
+                    <BackgroundInsets><AbsInset left="4" right="4" top="3" bottom="3"/></BackgroundInsets>
+                    <EdgeSize><AbsValue val="16"/></EdgeSize>
+                    <color r="0" g="0" b="0" a="0.8"/>
+                </Backdrop>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <!-- 로딩 표시 -->
+                        <FontString name="$parent_LoadingString" font="GameFontNormalLarge" justifyH="CENTER" justifyV="MIDDLE" text="Loading...">
+                            <Size><AbsDimension x="140" y="20"/></Size>
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="TOP">
+                                    <Offset><AbsDimension x="0" y="-50"/></Offset>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="1" g="1" b="1" a="1"/>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+
+            <!-- "설정" 버튼 -->
+            <Button name="Inspector_ConfigButton" inherits="UIPanelButtonTemplate" text="Config" frameStrata="FULLSCREEN">
+                <Size><AbsDimension x="68" y="28"/></Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent_MainFrame">
+                        <Offset><AbsDimension x="10" y="-10"/></Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick function="Inspector_ConfigButton_OnClick"/>
+                </Scripts>
+            </Button>
+
+            <!-- "닫기" 버튼 -->
+            <Button name="Inspector_MinimizeButton" inherits="UIPanelCloseButton" frameStrata="DIALOG">
+                <Size><AbsDimension x="32" y="32"/></Size>
+            <!--Button name="Inspector_CloseButton" inherits="UIPanelButtonTemplate" text="Close" frameStrata="FULLSCREEN">
+                <Size><AbsDimension x="68" y="28"/></Size-->
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent_MainFrame">
+                        <Offset><AbsDimension x="-6" y="-6"/></Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick function="Inspector_CloseButton_OnClick"/>
+                </Scripts>
+            </Button>
+
+            <!-- "작게" 버튼 -->
+            <Button name="Inspector_SmallerButton" frameStrata="DIALOG">
+                <Size><AbsDimension x="32" y="32"/></Size>
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="$parent_MainFrame">
+                        <Offset><AbsDimension x="-28" y="-6"/></Offset>
+                    </Anchor>
+                </Anchors>
+                <NormalTexture file="Interface\Buttons\UI-Panel-SmallerButton-Up"/>
+                <PushedTexture file="Interface\Buttons\UI-Panel-SmallerButton-Down"/>
+                <HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+                <Scripts>
+                    <OnClick function="Inspector_SmallerButton_OnClick"/>
+                </Scripts>
+            </Button>
+
+            <!-- "살펴보기" 버튼 -->
+            <Button name="Inspector_BlizzardInspectButton" inherits="UIPanelButtonTemplate" hidden="false" text="Inspect" frameStrata="DIALOG">
+                <Size><AbsDimension x="68" y="28"/></Size>
+                <Anchors>
+                    <Anchor point="BOTTOM" relativePoint="BOTTOM" relativeTo="$parent_InventoryFrameLeft">
+                        <Offset><AbsDimension x="0" y="35"/></Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick function="Inspector_BlizzardInspectButton_OnClick"/>
+                </Scripts>
+            </Button>
+        </Frames>
+
+        <Scripts>
+            <OnLoad function="Inspector_OnLoad"/>
+        </Scripts>
+
+    </Frame>
+
+</Ui>

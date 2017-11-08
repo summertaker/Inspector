@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="INSPECTOR_INSPECT" header="INSPECTOR" category="ADDONS">
+		Inspector_Inspect_OnPress()
+	</Binding>
+</Bindings>

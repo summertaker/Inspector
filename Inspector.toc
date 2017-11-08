@@ -1,0 +1,11 @@
+## Interface: 70300
+## Title: Inspector
+## Title-koKR: 인스펙터
+## Author: Summertaker
+## Version: 2.9
+## SavedVariables: InspectorSettings
+
+Localization.lua
+Inspector.xml
+Miniature.xml
+Config.xml
