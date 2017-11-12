@@ -1,6 +1,8 @@
 ## Interface: 70300
 ## Title: Inspector
 ## Title-koKR: 인스펙터
+## Notes: Shows 3D Model and Equipments of the Unit.
+## Notes-koKR: 유닛의 3D 모델과 장비를 표시합니다.
 ## Author: Summertaker
 ## Version: 2.9
 ## SavedVariables: InspectorSettings
